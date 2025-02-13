@@ -18,7 +18,8 @@ services: # 定義服務
         container_name: nginx # 設定容器名稱為 nginx
         restart: always # 設定容器總是重新啟動
         ports: # 定義端口映射
-            - "8000:80" # 將主機的 8000 端口映射到容器的 80 端口
+            - "80:80" # 允許外部存取 HTTP
+            - "443:443"  # 允許外部存取 HTTPS
         volumes: # 定義掛載卷
             - .:/var/www # 將當前目錄掛載到容器的 /var/www
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # 將 nginx 配置檔案掛載到容器的指定位置
