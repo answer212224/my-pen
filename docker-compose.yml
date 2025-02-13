@@ -6,6 +6,8 @@ services: # 定義服務
         working_dir: /var/www # 設定工作目錄為 /var/www
         volumes: # 定義掛載卷
             - .:/var/www # 將當前目錄掛載到容器的 /var/www
+            - ./storage:/var/www/storage # 將 storage 目錄掛載到容器的 /var/www/storage
+            - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini # 將 php.ini 配置檔案掛載到容器的指定位置
         networks: # 定義網路
             - laravel # 使用名為 laravel 的網路
         depends_on: # 定義依賴服務
@@ -56,7 +58,7 @@ services: # 定義服務
             PMA_PASSWORD: ${DB_PASSWORD} # 設定 phpMyAdmin 使用者密碼
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # 設定 MySQL root 密碼
         ports: # 定義端口映射
-            - "9000:80" # 將主機的 8080 端口映射到容器的 80 端口
+            - "8080:80" # 將主機的 8080 端口映射到容器的 80 端口
         networks: # 定義網路
             - laravel # 使用名為 laravel 的網路
 

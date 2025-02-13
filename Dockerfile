@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql mbstring exif pcntl bcmath opcache
 
+# 設定自訂 php.ini
+COPY ./php/php.ini /usr/local/etc/php/conf.d/custom.ini
+
 # 安裝 Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
