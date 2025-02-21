@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# My Pen
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 簡介
+**My Pen** 是一個基於 Laravel 框架的 Web 應用程式，旨在提供一個線上筆記平台，讓使用者可以方便地創建、編輯和管理個人筆記。此專案包含 Docker 支援，方便在各種環境中部署和運行。
 
-## About Laravel
+## 功能特性
+- **筆記管理**：創建、編輯、刪除和分類筆記。
+- **使用者認證**：提供註冊、登入和密碼重設功能。
+- **富文本編輯器**：使用者可以在筆記中添加格式、圖片和連結。
+- **搜尋功能**：快速搜尋筆記內容。
+- **Docker 支援**：透過 Docker 容器化部署，簡化安裝和配置流程。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 環境需求
+- **Docker**：確保已安裝 Docker 以運行容器。
+- **Docker Compose**：用於定義和運行多容器 Docker 應用程式。
+- **PHP** 8.1 以上。
+- **MySQL** 8.0 以上。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 安裝與設定
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. 克隆專案
+```bash
+git clone https://github.com/answer212224/my-pen.git
+cd my-pen
+```
 
-## Learning Laravel
+### 2. 建立環境設定檔
+```bash
+cp .env.example .env
+```
+根據需要修改 `.env` 文件中的資料庫連線資訊和其他設定。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. 啟動 Docker 容器
+```bash
+docker-compose up -d
+```
+此命令將啟動應用程式、資料庫和其他必要的服務。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 4. 執行資料庫遷移
+```bash
+docker-compose exec app php artisan migrate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 5. 安裝前端相依套件
+```bash
+docker-compose exec app npm install
+```
 
-## Laravel Sponsors
+### 6. 編譯前端資源
+```bash
+docker-compose exec app npm run build
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 7. 訪問應用程式
+在瀏覽器中打開 `http://localhost` 即可訪問應用程式。
 
-### Premium Partners
+## 測試
+使用 PHPUnit 進行測試：
+```bash
+docker-compose exec app php artisan test
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 貢獻方式
+歡迎提交 Pull Request 來改進此專案。在提交前，請確保所有測試均已通過，並遵循項目的代碼風格。
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 授權
+此專案採用 MIT 授權。
